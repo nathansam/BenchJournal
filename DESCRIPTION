@@ -1,0 +1,24 @@
+Package: BenchJournal
+Type: Package
+Title: Track Benchmark Results for a Package
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Nathan",
+           family = "Constantine-Cooke",
+           role = c("aut", "cre"),
+           email = "nathan.constantine-cooke@ed.ac.uk")
+Description: What the package does (one paragraph).
+License: GPL-3
+Depends: R (>= 3.5.0)
+Imports:
+  microbenchmark,
+  usethis,
+  ggplot2,
+  plotly
+URL: https://github.com/nathansam/BenchJournal
+BugReports: https://github.com/nathansam/BenchJournal/issues
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.0.2
+Suggests: 
+    testthat
