@@ -4,10 +4,16 @@
 \alias{NewEntry}
 \title{Create new entry of benchmark results in the journal.}
 \usage{
-NewEntry(times = 10)
+NewEntry(times = 10, warmup = 2)
 }
 \arguments{
 \item{times}{The number of times to benchmark each script.}
+
+\item{warmup}{The warmup period. Defaults to 2. The first runs are typically
+much slower than the remaining runs due to the I/O operations invovled when
+reading the script(s). As such, using a warmup period is strongly advised.
+Bear in mind the total number of runs will be times + warmup, so a high
+value for warmup is not advised.}
 }
 \description{
 Uses \code{microbenchmark} to benchmark the scripts in

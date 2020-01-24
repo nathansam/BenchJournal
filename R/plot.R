@@ -33,7 +33,7 @@ JournalBoxPlot <- function(units = 's'){
 
 
     p <- plotly::ggplotly(p)
-    return(p)
+    print (p)
 
   }
 
