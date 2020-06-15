@@ -1,0 +1,22 @@
+template:
+  params:
+    bootswatch: paper
+destination: docs
+development:
+  mode: auto
+reference:
+- title: "User functions"
+  desc: "Functions intended to be accessed by the user"
+  contents:
+    - Init
+    - NewEntry
+    - NewJournal
+    - JournalBoxPlot
+
+
+- title: "Internal functions"
+  desc: "Functions not meant to be accessed by the user"
+  contents:
+    - CreateNewEntry
+    - GetPkgName
+    - RemoveOutliers

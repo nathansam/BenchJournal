@@ -17,8 +17,8 @@ GPL-3](https://img.shields.io/badge/License-GPL3-green.svg)](https://opensource.
 <!-- badges: end -->
 
 BenchJournal is a lightweight tool to keep track of benchmarks for a
-package as it is developed. Automatic and manual benchmarking is
-supported.
+package as it is being developed. Running benchmarks automatically or
+manually is supported.
 
 ## Installation
 

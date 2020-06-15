@@ -26,7 +26,8 @@ knitr::opts_chunk$set(
 <!-- badges: end -->
 
 BenchJournal is a lightweight tool to keep track of benchmarks for a package as 
-it is developed. Automatic and manual benchmarking is supported.
+it is being developed. Running benchmarks automatically or manually is
+supported.
 
 ## Installation
 
