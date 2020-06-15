@@ -12,8 +12,8 @@
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 <!-- Bootstrap -->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/3.4.0/paper/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous" />
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha256-bZLfwXAP04zRMK2BjiO8iu9pf4FbLqX6zitd+tIvLhE=" crossorigin="anonymous" />
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha256-nuL8/2cJ5NDSSwnKD8VqreErSWHtnEP9E7AySL+1ev4=" crossorigin="anonymous"></script>
 
@@ -71,7 +71,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">BenchJournal</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.0.0.9000</span>
+        <span class="version label label-danger" data-toggle="tooltip" data-placement="bottom" title="Unreleased version">0.0.0.9000</span>
       </span>
     </div>
 
@@ -121,8 +121,45 @@
     <tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
+          <h2 id="section-user-functions" class="hasAnchor"><a href="#section-user-functions" class="anchor"></a>User functions</h2>
+          <p class="section-desc"><p>Functions intended to be accessed by the user</p></p>
+        </th>
+      </tr>
+      
+      
+    </tbody><tbody>
+      
+      
+      <tr>
+        
+        <td>
+          <p><code><a href="Init.html">Init()</a></code> </p>
+        </td>
+        <td><p>Create folders in /man required for BenchJournal</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="NewEntry.html">NewEntry()</a></code> </p>
+        </td>
+        <td><p>Create new entry of benchmark results in the journal.</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="NewJournal.html">NewJournal()</a></code> </p>
+        </td>
+        <td><p>Create a new journal file</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="JournalBoxPlot.html">JournalBoxPlot()</a></code> </p>
+        </td>
+        <td><p>Create interactive boxplots of benchmark results from journal.</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-internal-functions" class="hasAnchor"><a href="#section-internal-functions" class="anchor"></a>Internal functions</h2>
+          <p class="section-desc"><p>Functions not meant to be accessed by the user</p></p>
         </th>
       </tr>
       
@@ -142,30 +179,6 @@
           <p><code><a href="GetPkgName.html">GetPkgName()</a></code> </p>
         </td>
         <td><p>Find name of current package</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="Init.html">Init()</a></code> </p>
-        </td>
-        <td><p>Create folders in /man required for BenchJournal</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="JournalBoxPlot.html">JournalBoxPlot()</a></code> </p>
-        </td>
-        <td><p>Create interactive boxplots of benchmark results from journal.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="NewEntry.html">NewEntry()</a></code> </p>
-        </td>
-        <td><p>Create new entry of benchmark results in the journal.</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="NewJournal.html">NewJournal()</a></code> </p>
-        </td>
-        <td><p>Create a new journal file</p></td>
       </tr><tr>
         
         <td>
