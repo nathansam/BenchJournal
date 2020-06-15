@@ -15,7 +15,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-# BenchJournal
+# BenchJournal <img src="man/figures/sticker.png" align="right" width="150" />
 
 <!-- badges: start -->
 [![R build status](https://github.com/nathansam/BenchJournal/workflows/R-CMD-check/badge.svg)](https://github.com/nathansam/BenchJournal/actions)

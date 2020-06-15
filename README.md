@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# BenchJournal
+# BenchJournal <img src="man/figures/sticker.png" align="right" width="150" />
 
 <!-- badges: start -->
 
