@@ -4,13 +4,16 @@
 \alias{JournalBoxPlot}
 \title{Create interactive boxplots of benchmark results from journal.}
 \usage{
-JournalBoxPlot(units = "s")
+JournalBoxPlot(units = "s", rm.outliers = FALSE)
 }
 \arguments{
-\item{units}{The unit of time to use for the plot. Either 's', 'ms', 'us'
-(microseconds), or 'ns'.}
+\item{units}{The unit of time to use for the plot. Either 's' (seconds),
+'ms' (milliseconds), 'us' (microseconds), or 'ns' (nanoseconds).}
+
+\item{rm.outliers}{Logical. If TRUE then outliers will not be included in the
+plot. Defaults to FALSE.}
 }
 \description{
 Uses \code{ggplot2} and \code{plotly} to create boxplots for
-each script in \code{man/BenchJournal/scripts} by package version.
+each script in \code{man/BenchJournal/scripts} by date.
 }

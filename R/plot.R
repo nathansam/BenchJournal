@@ -1,12 +1,16 @@
 #' @title Create interactive boxplots of benchmark results from journal.
 #' @description Uses \code{ggplot2} and \code{plotly} to create boxplots for
-#' each script in \code{man/BenchJournal/scripts} by package version.
-#' @param units The unit of time to use for the plot. Either 's', 'ms', 'us'
-#'     (microseconds), or 'ns'.
+#' each script in \code{man/BenchJournal/scripts} by date.
+#' @param units The unit of time to use for the plot. Either 's' (seconds),
+#'     'ms' (milliseconds), 'us' (microseconds), or 'ns' (nanoseconds).
+#' @param rm.outliers Logical. If TRUE then outliers will not be included in the
+#'     plot. Defaults to FALSE.
 #' @export
-JournalBoxPlot <- function(units = 's'){
-  pkg.version <- time <- NULL
+JournalBoxPlot <- function(units = 's', rm.outliers = FALSE){
+  test.date <- NULL
+  time <- NULL
   journal <- utils::read.csv('man/BenchJournal/journal.csv')
+  if (rm.outliers) journal <- RemoveOutliers(journal)
   scripts <- unique(as.character(journal$script))
 
   for (script in scripts){
@@ -22,12 +26,17 @@ JournalBoxPlot <- function(units = 's'){
 
 
 
-    p <- ggplot2::ggplot(ggplot2::aes(x = pkg.version, y = time),
-                         data = script.results) + ggplot2::geom_boxplot()
+    p <- ggplot2::ggplot(ggplot2::aes(x = test.date, y = time),
+                         data = script.results)
+    p <- p + ggplot2::geom_boxplot()
     p <- p + ggplot2::xlab('Package Version')
     p <- p + ggplot2::ylab(paste('Time (', units,')', sep = ""))
-    p <- p + ggplot2::ggtitle(paste('Benchmark Results for ', script,
-                                    ' (',GetPkgName(),')', sep = "") )
+    p <- p + ggplot2::ggtitle(paste('Benchmark Results for ',
+                                    script,
+                                    ' (',
+                                    GetPkgName(),
+                                    ')',
+                                    sep = "") )
     p <- p + ggplot2::theme_bw()
 
 

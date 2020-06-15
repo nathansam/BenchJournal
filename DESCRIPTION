@@ -7,18 +7,25 @@ Authors@R:
            family = "Constantine-Cooke",
            role = c("aut", "cre"),
            email = "nathan.constantine-cooke@ed.ac.uk")
-Description: What the package does (one paragraph).
+Description: BenchJournal is a tool to keep track of benchmarks for a package as
+  the package is developed. This is useful when aiming to refactor
+  code, or convert R code to C/C++, and wish to monitor progress. Two workflows
+  are supported: an automatic workflow which will update benchmark results
+  when git push is ran, and a manual workflow which asssumes the R package
+  version has been updated between updates. 
 License: GPL-3
-Depends: R (>= 3.5.0)
+Depends: R (>= 4.0.0)
 Imports:
-  microbenchmark,
-  usethis,
   ggplot2,
-  plotly
+  microbenchmark,
+  outliers,
+  plotly,
+  usethis
 URL: https://github.com/nathansam/BenchJournal
 BugReports: https://github.com/nathansam/BenchJournal/issues
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 7.0.2
+RoxygenNote: 7.1.0
 Suggests: 
-    testthat
+    testthat,
+    covr

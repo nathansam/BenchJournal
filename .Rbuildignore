@@ -3,3 +3,6 @@
 ^man/BenchJourney$
 ^man/BenchJournal$
 ^README\.Rmd$
+^\.github$
+^codecov\.yml$
+^docs$

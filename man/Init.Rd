@@ -12,5 +12,6 @@ Sets up a \code{BenchmarkJournal} subdirectory in the
     hold the benchmark results and two additional folders. One for holding
     scripts to be benchmarked, called \code{scripts}. and one to hold plots,
     helpfully called \code{plots}.The \code{BenchmarkJournal} subdirectory is
-    also added to .Rbuildignore
+    also added to .Rbuildignore. The user is asked if they wish to use the
+    githook workflow or manually run \link{NewEntry}
 }

@@ -4,7 +4,7 @@
 \alias{NewEntry}
 \title{Create new entry of benchmark results in the journal.}
 \usage{
-NewEntry(times = 10, warmup = 2)
+NewEntry(times = 10, warmup = 2, hash = NULL)
 }
 \arguments{
 \item{times}{The number of times to benchmark each script.}
@@ -14,6 +14,9 @@ much slower than the remaining runs due to the I/O operations invovled when
 reading the script(s). As such, using a warmup period is strongly advised.
 Bear in mind the total number of runs will be times + warmup, so a high
 value for warmup is not advised.}
+
+\item{hash}{The hash for a git committ. Used when the git hook workflow
+is being used. If you are a human, leave this as \code{NULL}.}
 }
 \description{
 Uses \code{microbenchmark} to benchmark the scripts in

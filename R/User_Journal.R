@@ -4,7 +4,8 @@
 #'     hold the benchmark results and two additional folders. One for holding
 #'     scripts to be benchmarked, called \code{scripts}. and one to hold plots,
 #'     helpfully called \code{plots}.The \code{BenchmarkJournal} subdirectory is
-#'     also added to .Rbuildignore
+#'     also added to .Rbuildignore. The user is asked if they wish to use the
+#'     githook workflow or manually run \link{NewEntry}
 #' @export
 Init <- function() {
 
@@ -20,20 +21,22 @@ Init <- function() {
 
   usethis::use_build_ignore("man/BenchJournal")
 
-  use.hook <- readline(prompt = "Update BenchJournal with every git push? Y/n ")
+  use.hook <- readline(prompt = "Update your journal automatically? Y/n ")
 
-  if (tolower(use.hook) %in% c("y", "yes")) {
+  if (tolower(use.hook) %in% c("y", "yes", "YES", "Y")) {
 
     usethis::use_git_hook("pre-push",
     "#!/bin/sh
-    Rscript -e 'BenchJournal::NewEntry()'
+    hashID=$(git rev-parse --short=7 HEAD)
+    Rscript -e 'BenchJournal::NewEntry(hash = commandArgs(T)[1])' $hashID
     git add man/BenchJournal/journal.csv
-    git commit -m 'Update BenchJournal file'")
+    git commit -m 'Update BenchJournal file' --no-verify"
+    )
 
-    cat("Updating with every git push \n")
+    cat("Updating automatically with every git push \n")
   } else{
-    cat("Not updating with every git push.\n")
-    cat("Manually run NewEntry() to update the journal\n")
+    cat("Updating manually instead. \n")
+    cat("Manually run NewEntry() to update the journal. \n")
   }
 }
 
@@ -55,9 +58,12 @@ NewJournal <- function(ask = TRUE) {
   }
 
     # else overwrite journal
-    journal <- data.frame(script = character(0), time = character(0),
-                          pkg.version = character(0), r.version = character(0),
-                          test.date = character(0), system.name = character(0))
+    journal <- data.frame(script = character(0),
+                          time = character(0),
+                          pkg.version = character(0),
+                          r.version = character(0),
+                          test.date = character(0),
+                          system.name = character(0))
     utils::write.csv(journal, "man/BenchJournal/journal.csv", row.names = F)
 }
 
@@ -73,12 +79,13 @@ NewJournal <- function(ask = TRUE) {
 #'   reading the script(s). As such, using a warmup period is strongly advised.
 #'   Bear in mind the total number of runs will be times + warmup, so a high
 #'   value for warmup is not advised.
+#' @param hash The hash for a git committ. Used when the git hook workflow
+#'   is being used. If you are a human, leave this as \code{NULL}.
 #' @export
-NewEntry <- function(times = 10, warmup = 2) {
+NewEntry <- function(times = 10, warmup = 2, hash = NULL) {
   scripts <- dir("man/BenchJournal/scripts")
 
   pkg.name <- GetPkgName()
-
 
   if (length(scripts) == 0) {
     stop("No R scripts found in man/BenchJournal/scripts")
@@ -89,16 +96,18 @@ NewEntry <- function(times = 10, warmup = 2) {
   journal$test.date <- as.vector(journal$test.date)
 
   if (as.character(utils::packageVersion(GetPkgName())) %in% unique(journal[, 3])) {
-    cat(paste("Benchmark results have already been recorded for this version of ",
-               pkg.name, " (", utils::packageVersion(GetPkgName()), ")\n",
-               sep = ""))
+    cat("Benchmark results have already been recorded for this version of ",
+        pkg.name,
+        " (",
+        utils::packageVersion(GetPkgName()),
+        ")\n")
   } else{
     for (script in scripts) {
-      new.entry <- CreateNewEntry(script, times, warmup = warmup)
+      new.entry <- CreateNewEntry(script, times, warmup, hash)
       journal <- rbind(journal, new.entry)
     }
 
-  utils::write.csv(journal, "man/BenchJournal/journal.csv",
-                   row.names = F)
+  utils::write.csv(journal, "man/BenchJournal/journal.csv", row.names = FALSE)
   }
+  cat("Finished running benchmarks! \n")
 }
